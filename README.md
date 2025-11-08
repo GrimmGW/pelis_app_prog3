@@ -1,16 +1,26 @@
-# peliculas_app_prog3
 
-A new Flutter project.
+# Peliculas App - Programacion III 🎬
 
-## Getting Started
+![Banner la App](https://i.imgur.com/8gSJJle.png)
 
-This project is a starting point for a Flutter application.
+Aplicación para el curso de Programación III del periodo septiembre-diciembre 2025.
 
-A few resources to get you started if this is your first Flutter project:
+En esta App se podrán visualizar las películas más taquilleras, etc...
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Cómo instalar 🧩
+
+Se puede instlar y probar la aplicación de la siguiente manera
+
+```bash
+  En Android: 
+        Descargar e instalar .apk.
+  En iOS:
+        No disponible de momento (nunca lo estará).
+```
+    
+## Desarrollador ✨
+
+Ing. Hector Luna Huizzi
+- [@grimmgw](https://www.github.com/grimmgw)
+

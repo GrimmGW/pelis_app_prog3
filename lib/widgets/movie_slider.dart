@@ -1,6 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:peliculas_app_prog3/models/models.dart';
 
-class MovieSlider extends StatelessWidget {
+class MovieSlider extends StatefulWidget {
+
+  final List<Movie> movie;
+  final Function onNextPage;
+  final String widgetName;
+
+  const MovieSlider({
+    super.key, 
+    required this.movie, 
+    required this.onNextPage, 
+    required this.widgetName,
+  });
+
+  @override
+  State<MovieSlider> createState() => _MovieSliderState();
+}
+
+class _MovieSliderState extends State<MovieSlider> {
+
+  final ScrollController scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    
+    scrollController.addListener((){
+
+      if(scrollController.position.pixels >= scrollController.position.maxScrollExtent - 500){
+        print('Hemos llegado al final');
+        widget.onNextPage();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,12 +51,13 @@ class MovieSlider extends StatelessWidget {
         children: [
           Padding(
             padding: EdgeInsetsGeometry.symmetric(horizontal: 10),
-            child: Text("Peliculas populares", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)
+            child: Text(widget.widgetName, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)
           ),
           Expanded(
             child: ListView.builder(
+              controller: scrollController,
               scrollDirection: Axis.horizontal,
-              itemCount: 20,
+              itemCount: widget.movie.length,
               itemBuilder: (BuildContext context, int index) {
                 return Container(
                   width: 130,
@@ -28,12 +67,12 @@ class MovieSlider extends StatelessWidget {
                   child: Column(
                     children: [
                       GestureDetector(
-                        onTap: () => Navigator.pushNamed(context, '/details', arguments: 'movie-instance'),
+                        onTap: () => Navigator.pushNamed(context, '/details', arguments: widget.movie[index]),
                         child: ClipRRect(
                           borderRadius: BorderRadiusGeometry.circular(10),
                           child: FadeInImage(
                             placeholder: AssetImage('assets/no-image.jpg'), 
-                            image: NetworkImage('https://placehold.co/200x300/png'),
+                            image: NetworkImage('${ widget.movie[index].fullPosterImg }'),
                             width: 130,
                             height: 170,
                             fit: BoxFit.cover,
@@ -41,7 +80,7 @@ class MovieSlider extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 5),
-                      Text("Titulo Peli")
+                      Text(widget.movie[index].title, maxLines: 2, overflow: TextOverflow.ellipsis,)
                     
                     ],
                   ),

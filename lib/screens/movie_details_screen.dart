@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:peliculas_app_prog3/models/models.dart';
+import 'package:peliculas_app_prog3/widgets/widgets.dart';
 
 class MovieDetailsScreen extends StatelessWidget {
    
@@ -18,6 +19,12 @@ class MovieDetailsScreen extends StatelessWidget {
           SliverList(delegate: SliverChildListDelegate([
             _PosterAndTitle(movie: movie,),
             _Overview(movie: movie,),
+            SizedBox(height: 10),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 10),
+              child: Text('Actores en esta película', style: Theme.of(context).textTheme.titleLarge,)
+            ),
+            CastingCards(movieId: movie.id,)
           ]))
         ],
       ),
@@ -91,11 +98,12 @@ class _PosterAndTitle extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(movie.title, 
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                style: Theme.of(context).textTheme.titleLarge,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 ),
                 Text(movie.originalTitle,
+                style: Theme.of(context).textTheme.bodyLarge,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 ),
@@ -103,7 +111,7 @@ class _PosterAndTitle extends StatelessWidget {
                   children: [
                     Icon(Icons.star_rounded),
                     SizedBox(width: 5,),
-                    Text('${ movie.voteAverage.round()}/10')
+                    Text('${ movie.voteAverage.round()}/10', style: Theme.of(context).textTheme.bodyLarge)
                   ],
                 )
               ],
@@ -127,9 +135,10 @@ class _Overview extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      child: Text(movie.overview, 
+      child: Text(movie.overview, style: Theme.of(context).textTheme.bodyLarge, 
       textAlign: TextAlign.justify,
       ),
     );
   }
 }
+

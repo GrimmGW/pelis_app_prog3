@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:peliculas_app_prog3/providers/movies_provider.dart';
 import 'package:peliculas_app_prog3/routes/app_routes.dart';
+import 'package:peliculas_app_prog3/themes/app_theme.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(AppState());
@@ -31,11 +32,7 @@ class MyApp extends StatelessWidget {
       initialRoute: AppRoutes.initialRoute,
       routes: AppRoutes.routes,
       //temas usando copyWith
-      theme: ThemeData.dark().copyWith(
-        appBarTheme: AppBarThemeData(
-          backgroundColor: Colors.deepPurpleAccent
-        )
-      )
+      theme: Apptheme.darkTheme
     );
   }
 }

@@ -51,7 +51,8 @@ class _MovieSliderState extends State<MovieSlider> {
         children: [
           Padding(
             padding: EdgeInsetsGeometry.symmetric(horizontal: 10),
-            child: Text(widget.widgetName, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)
+            //Titilo del w
+            child: Text(widget.widgetName, style: Theme.of(context).textTheme.titleLarge )
           ),
           Expanded(
             child: ListView.builder(
@@ -80,7 +81,7 @@ class _MovieSliderState extends State<MovieSlider> {
                         ),
                       ),
                       SizedBox(height: 5),
-                      Text(widget.movie[index].title, maxLines: 2, overflow: TextOverflow.ellipsis,)
+                      Text(widget.movie[index].title, style: Theme.of(context).textTheme.bodyLarge, maxLines: 2, overflow: TextOverflow.ellipsis,)
                     
                     ],
                   ),

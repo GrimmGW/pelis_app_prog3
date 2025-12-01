@@ -39,7 +39,7 @@ class Movie {
         return 'https://image.tmdb.org/t/p/w500/$posterPath';
       }
 
-      return 'assets/no-image.jpg';
+      return 'https://i.imgur.com/6rW0yxJ.png';
     }
 
     factory Movie.fromJson(String str) => Movie.fromMap(json.decode(str));

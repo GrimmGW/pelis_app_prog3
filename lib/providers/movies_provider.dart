@@ -2,6 +2,8 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:peliculas_app_prog3/models/models.dart';
 
+
+//debe siempre extender de changenotifier
 class MoviesProvider extends ChangeNotifier{
 
   final String _apiKey = '2136248d54a84c6f12f8956d99ac2ace';

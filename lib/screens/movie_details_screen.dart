@@ -10,10 +10,14 @@ class MovieDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
     // Cambiar luego por instancia de Movie;
+    //! final String movie = ModalRoute.of(context)?.settings.arguments.toString() ?? "no-movie";
+    //los ?? son 'or' u 'o'
+
     final Movie movie = ModalRoute.of(context)!.settings.arguments as Movie;
 
     return Scaffold(
       body: CustomScrollView(
+        //los slivers tienen cierto comportamiento preporgramado cuando hacemos scroll en el widget padre
         slivers: [
           _CustomAppBar(movie: movie,),
           SliverList(delegate: SliverChildListDelegate([
@@ -44,8 +48,8 @@ class _CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       expandedHeight: 150,
-      floating: false,
       pinned: true,
+      //pinned nunca desaparece
       flexibleSpace: FlexibleSpaceBar(
         titlePadding: EdgeInsets.all(0),
         title: Container(
